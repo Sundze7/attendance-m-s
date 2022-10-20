@@ -1,16 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <SideBar />
+  <div :style="{ 'margin-left': sidebarWidth}">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SideBar from "@/components/SideBar.vue"
+import { sidebarWidth} from "@/components/state"
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    SideBar
+  },
+  setup() {
+    return { sidebarWidth }
   }
+  
 }
 </script>
 
@@ -21,6 +27,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
